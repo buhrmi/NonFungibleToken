@@ -2,7 +2,6 @@ pragma solidity 0.4.18;
 
 import "./NonFungibleToken.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
-import "zeppelin-solidity/contracts/ownership/Ownable.sol';
 
 /**
  * @title MintableNonFungibleToken
@@ -20,9 +19,8 @@ contract MintableNonFungibleToken is NonFungibleToken {
         _;
     }
 
-    function mint(address _owner, uint256 _tokenId, string _metadata, address _approvedAddress)
+    function mint(address _owner, uint256 _tokenId, address _approvedAddress, string _metadata)
         public
-        onlyOwner
         onlyNonexistentToken(_tokenId)
     {
         _setTokenOwner(_tokenId, _owner);
